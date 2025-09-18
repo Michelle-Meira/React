@@ -1,0 +1,65 @@
+// src/components/WineDetails.js
+import React from "react";
+import { motion } from "framer-motion";
+import { X } from "lucide-react";
+
+const WineDetails = ({ wine, onClose, onAddToCart, onOpenCart }) => {
+  if (!wine) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      className="bg-white rounded-2xl shadow-xl max-w-2xl w-full p-6 relative"
+    >
+      {/* Botão Fechar */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+      >
+        <X size={24} />
+      </button>
+
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Imagem do vinho */}
+        <div className="flex justify-center items-center">
+          <img
+            src={wine.image}
+            alt={wine.name}
+            className="max-h-80 w-auto object-contain"
+          />
+        </div>
+
+        {/* Informações */}
+        <div className="flex flex-col justify-center text-center md:text-left">
+          <h2 className="text-3xl font-bold mb-2">{wine.name}</h2>
+          <p className="text-gray-600 mb-4">{wine.description}</p>
+          <p className="text-xl font-semibold mb-6">
+            R${wine.price.toFixed(2)}
+          </p>
+
+          <div className="flex flex-col gap-3">
+            {/* Botão Adicionar ao Carrinho */}
+            <button
+              onClick={() => onAddToCart(wine)}
+              className="px-6 py-3 bg-vinho-escuro text-white rounded-full shadow-md hover:bg-vinho-claro transition"
+            >
+              Adicionar ao Carrinho
+            </button>
+
+            {/* Botão Ir para Sacola */}
+            <button
+              onClick={onOpenCart}
+              className="px-6 py-3 border border-vinho-escuro text-vinho-escuro rounded-full hover:bg-vinho-escuro hover:text-white transition"
+            >
+              Ir para Sacola
+            </button>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default WineDetails;

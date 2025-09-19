@@ -4,7 +4,7 @@ import Wines from './Wines';
 const WinesPage = ({ onAddToCart }) => {
     return (
         <section className="container mx-auto px-4 py-8 pt-20">
-            <h2 className="text-4xl font-light text-center mb-8">Nossos Vinhos</h2>
+            <h2 className="text-4xl font-light text-center mb-8">Veja conhecer nossas novidades</h2>
             <Wines
                 onAddToCart={onAddToCart}
             />

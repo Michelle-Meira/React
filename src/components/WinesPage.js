@@ -1,5 +1,5 @@
 import React from 'react';
-import Wines from './Wines'; // Aqui está a correção. Use "./" para a mesma pasta.
+import Wines from './Wines';
 
 const WinesPage = ({ onAddToCart }) => {
     return (
